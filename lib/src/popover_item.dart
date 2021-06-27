@@ -21,11 +21,13 @@ class PopoverItem extends StatefulWidget {
   final double? arrowDyOffset;
   final double? contentDyOffset;
   final bool isAnimateZooming;
+  final bool alwaysCentered;
 
   const PopoverItem({
     required this.child,
     required this.context,
     required this.isAnimateZooming,
+    required this.alwaysCentered,
     this.backgroundColor,
     this.direction,
     this.radius,
@@ -63,6 +65,7 @@ class _PopoverItemState extends State<PopoverItem> {
               constraints: constraints,
               direction: widget.direction,
               arrowHeight: widget.arrowHeight,
+              alwaysCentered: widget.alwaysCentered,
               child: PopoverContext(
                 attachRect: attachRect,
                 animation: widget.animation,
