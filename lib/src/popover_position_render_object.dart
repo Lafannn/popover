@@ -9,11 +9,11 @@ class PopoverPositionRenderObject extends RenderShiftedBox {
   Rect? _attachRect;
   BoxConstraints? _additionalConstraints;
   double? arrowHeight;
-  bool alwaysCentered;
+  bool isAlwaysCentered;
 
   PopoverPositionRenderObject({
     required this.arrowHeight,
-    required this.alwaysCentered,
+    required this.isAlwaysCentered,
     RenderBox? child,
     Rect? attachRect,
     BoxConstraints? constraints,
@@ -55,7 +55,7 @@ class PopoverPositionRenderObject extends RenderShiftedBox {
 
     if (_direction == PopoverDirection.top ||
         _direction == PopoverDirection.bottom) {
-      return _dxOffset(_direction, _horizontalOffset(size, alwaysCentered), size);
+      return _dxOffset(_direction, _horizontalOffset(size, isAlwaysCentered), size);
     } else {
       return _dyOffset(_direction, _verticalOffset(size), size);
     }
@@ -96,7 +96,7 @@ class PopoverPositionRenderObject extends RenderShiftedBox {
     }
   }
 
-  double _horizontalOffset(Size size, bool alwaysCentered) {
+  double _horizontalOffset(Size size, bool isAlwaysCentered) {
     var offset = 0.0;
 
     if (attachRect!.left > size.width / 2 &&
@@ -109,7 +109,7 @@ class PopoverPositionRenderObject extends RenderShiftedBox {
       // In this case the popover was shifted relative to the center of the widget
       // We need to leave it in the center
 
-      if(alwaysCentered) {
+      if(isAlwaysCentered) {
         offset = attachRect!.left + attachRect!.width / 2 - size.width / 2;
       } else {
         offset = Utils().screenWidth - arrowHeight! - size.width;

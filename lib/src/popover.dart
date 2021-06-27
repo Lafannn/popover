@@ -89,7 +89,7 @@ Future<T?> showPopover<T extends Object?>({
   String? barrierLabel,
   Key? key,
   bool isAnimateZooming = true,
-  bool? alwaysCentered = false,
+  bool? isAlwaysCentered = false,
 }) {
   constraints = (width != null || height != null)
       ? constraints?.tighten(width: width, height: height) ??
@@ -135,7 +135,7 @@ Future<T?> showPopover<T extends Object?>({
               contentDyOffset: contentDyOffset,
               key: key,
               isAnimateZooming: isAnimateZooming,
-              alwaysCentered: alwaysCentered ?? false,
+              isAlwaysCentered: isAlwaysCentered ?? false,
             ),
           ),
         );
