@@ -91,7 +91,12 @@ class _PopoverItemState extends State<PopoverItem> {
   void _configure() {
     if (mounted) {
       _configureConstraints();
-      _configureRect();
+      try {
+        _configureRect();
+      } on FlutterError {
+        attachRect = Rect.zero;
+        constraints = const BoxConstraints(maxHeight: 12, maxWidth: 0);
+      }
     }
   }
 
